@@ -5,6 +5,26 @@
   "baseCurrency": "EUR",
   "fx": [
     {
+      "currency": "FJD",
+      "precision": 2,
+      "nameI18N": "Fiji Dollar",
+      "exchangeRate": {
+        "buy": 2,
+        "middle": 2.25,
+        "sell": 2.5,
+        "indicator": 0,
+        "lastModified": "2012-02-14T23:00:00Z"
+      },
+      "banknoteRate": {
+        "buy": 2.2,
+        "middle": 2.4,
+        "sell": 2.6,
+        "indicator": 0,
+        "lastModified": "2018-11-06T23:00:00Z"
+      },
+      "flags": ["provided"]
+    },
+    {
       "currency": "MXN",
       "precision": 2,
       "nameI18N": "Mexican Peso",
