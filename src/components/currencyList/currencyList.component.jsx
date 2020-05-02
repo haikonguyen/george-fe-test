@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Divider } from '@material-ui/core';
 import CurrencyItem from '../currencyItem/currencyItem.component';
-
-//https://api.randomuser.me/
 
 const CurrencyList = () => {
   const [data, setData] = useState(null);
@@ -12,6 +9,7 @@ const CurrencyList = () => {
       'https://raw.githubusercontent.com/keriati/george-fx-test/master/fx.json'
     );
     const resJson = await response.json();
+    const mainCurrency = resJson.baseCurrency;
     const data = resJson.fx;
     setData(data);
   };
@@ -32,7 +30,21 @@ const CurrencyList = () => {
               0,
               2
             )}/flat/64.png`}
-            // buy={currencyItem.banknoteRate.buy}
+            buy={
+              currencyItem?.exchangeRate?.buy
+                ? currencyItem?.exchangeRate?.buy
+                : 'N/A'
+            }
+            middle={
+              currencyItem?.exchangeRate?.middle
+                ? currencyItem?.exchangeRate?.middle
+                : 'N/A'
+            }
+            sell={
+              currencyItem?.exchangeRate?.sell
+                ? currencyItem?.exchangeRate?.sell
+                : 'N/A'
+            }
           />
         ))}
     </>
