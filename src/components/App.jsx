@@ -1,13 +1,8 @@
 import React, { useContext, useEffect } from 'react';
-import styled from 'styled-components';
-import Layout from './layout/layout.component';
+import { Router } from '@reach/router';
 import CurrencyList from './currencyList/currencyList.component';
+import CurrencyDetail from './currencyDetail/currencyDetail.component';
 import { UiContext } from '../context/ui.context';
-
-const Container = styled.main`
-  max-width: 1140px;
-  margin: 0 auto;
-`;
 
 const App = () => {
   const uiContext = useContext(UiContext);
@@ -24,11 +19,10 @@ const App = () => {
   }, []);
 
   return (
-    <Layout>
-      <Container>
-        <CurrencyList data={filteredCurrencies} />
-      </Container>
-    </Layout>
+    <Router>
+      <CurrencyList path='/' data={filteredCurrencies} />
+      <CurrencyDetail data={data} path='detail/:currencyId' />
+    </Router>
   );
 };
 
