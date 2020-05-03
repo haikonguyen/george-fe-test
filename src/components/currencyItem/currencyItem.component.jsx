@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 const StyledDiv = styled.div`
   .paperWrap {
     margin: 20px 0;
-    padding: 20px;
+    padding: 5px;
   }
   .flagSection {
     padding: 10px;
