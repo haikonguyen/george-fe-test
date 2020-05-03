@@ -1,11 +1,17 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { StylesProvider } from '@material-ui/core/styles';
+import styled from 'styled-components';
 import Nav from '../navigation/navigation.component';
 import { GlobalStyle } from './layout.style';
 
+const Container = styled.main`
+  max-width: 1140px;
+  margin: 0 auto;
+`;
+
 const Layout = (props) => {
-  const { children, data } = props;
+  const { children, data, detailPageStyle } = props;
 
   return (
     <StylesProvider injectFirst>
@@ -22,9 +28,8 @@ const Layout = (props) => {
           href='https://unpkg.com/tachyons@4/css/tachyons.min.css'
         />
       </Helmet>
-      <Nav data={data} />
-      {/* Templates & Pages */}
-      {children}
+      <Nav detailPageStyle={detailPageStyle} data={data} />
+      <Container>{children}</Container>
     </StylesProvider>
   );
 };

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 
 const initialState = {
@@ -23,8 +23,7 @@ const UiContextProvider = (props) => {
       'https://raw.githubusercontent.com/haikonguyen/george-fe-test/master/src/data/mockData.json'
     );
     const resJson = await response.json();
-    const mainCurrency = resJson.baseCurrency;
-    const receivedData = resJson.fx;
+    const receivedData = resJson;
     setData(receivedData);
   };
 

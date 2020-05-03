@@ -42,11 +42,15 @@ const StyledDiv = styled.div`
 `;
 
 const CurrencyItem = (props) => {
-  const { flag, currency, name, buy, middle, sell } = props;
+  const { flag, currency, name, buy, middle, sell, detailPageStyle } = props;
   return (
     <StyledDiv>
       <Paper
-        className='paperWrap flex flex-column flex-row-l justify-between'
+        className={
+          detailPageStyle
+            ? 'paperWrap flex flex-column'
+            : 'paperWrap flex flex-column flex-row-l justify-between'
+        }
         elevation={3}
       >
         <section className='flagSection flex items-center'>

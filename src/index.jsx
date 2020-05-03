@@ -1,11 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createGlobalStyle } from 'styled-components';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import UiContextProvider from './context/ui.context';
 
+const GlobalStyle = createGlobalStyle`
+  a:-webkit-any-link {
+    text-decoration: none;
+  }
+`;
+
 ReactDOM.render(
   <UiContextProvider>
+    <GlobalStyle />
     <App />
   </UiContextProvider>,
   document.getElementById('root')

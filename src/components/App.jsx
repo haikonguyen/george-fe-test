@@ -7,8 +7,10 @@ import { UiContext } from '../context/ui.context';
 const App = () => {
   const uiContext = useContext(UiContext);
   const { data, fetchFunc, searchField } = uiContext;
+  const fxData = data?.fx;
+  const baseCurrency = data?.baseCurrency;
 
-  const filteredCurrencies = data?.filter((filteredData) => {
+  const filteredCurrencies = fxData?.filter((filteredData) => {
     return filteredData.nameI18N
       ?.toLowerCase()
       .includes(searchField.toLowerCase());
@@ -20,8 +22,12 @@ const App = () => {
 
   return (
     <Router>
-      <CurrencyList path='/' data={filteredCurrencies} />
-      <CurrencyDetail data={data} path='detail/:currencyId' />
+      <CurrencyList
+        path='/'
+        baseCurrency={baseCurrency}
+        data={filteredCurrencies}
+      />
+      <CurrencyDetail data={fxData} path='detail/:currencyId' />
     </Router>
   );
 };
