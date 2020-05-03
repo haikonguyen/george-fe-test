@@ -7,12 +7,13 @@ import { UiContext } from '../../context/ui.context';
 
 const StyledAppBar = styled(AppBar)`
   .nav {
-    &--main {
+    &__main {
       background-color: #212121;
     }
 
-    &--search {
+    &__search {
       background-color: grey;
+      width: 100%;
 
       .MuiFilledInput-input {
         padding: 40px 12px 10px;
@@ -25,26 +26,36 @@ const StyledAppBar = styled(AppBar)`
       .MuiFilledInput-underline:after {
         border-bottom: 2px solid white;
       }
+
+      &--fixed {
+        position: fixed;
+        top: 0;
+      }
     }
   }
 `;
 
-export default function Nav(props) {
+export default function Nav() {
   const uiContext = useContext(UiContext);
-  const { setSearchField } = uiContext;
+  const { setSearchField, showOnScroll } = uiContext;
 
   const handleChange = (event) => {
     const { value } = event.target;
-    console.log(value);
     setSearchField(value);
   };
 
   return (
-    <StyledAppBar position='static'>
-      <Toolbar className='nav nav--main'>
+    <StyledAppBar position={showOnScroll ? 'fixed' : 'static'}>
+      <Toolbar className={showOnScroll ? 'dn' : 'nav nav__main'}>
         <h1>George FE Test</h1>
       </Toolbar>
-      <Toolbar className='nav nav--search'>
+      <Toolbar
+        className={
+          showOnScroll
+            ? 'nav nav__search nav__search--fixed'
+            : 'nav nav__search'
+        }
+      >
         <TextField
           // eslint-disable-next-line no-restricted-globals
           onChange={() => handleChange(event)}
