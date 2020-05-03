@@ -1,5 +1,6 @@
 import React from 'react';
 import CurrencyItem from '../currencyItem/currencyItem.component';
+import Layout from '../layout/layout.component';
 
 const CurrencyDetail = (props) => {
   const { currencyId, data } = props;
@@ -9,7 +10,7 @@ const CurrencyDetail = (props) => {
   });
 
   return (
-    <>
+    <Layout detailPageStyle>
       {dynamicPath && (
         <CurrencyItem
           currency={dynamicPath[0].currency}
@@ -33,9 +34,10 @@ const CurrencyDetail = (props) => {
               ? dynamicPath[0]?.exchangeRate?.sell
               : 'N/A'
           }
+          detailPageStyle
         />
       )}
-    </>
+    </Layout>
   );
 };
 

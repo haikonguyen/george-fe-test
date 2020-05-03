@@ -3,6 +3,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import TextField from '@material-ui/core/TextField';
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
+import { navigate } from '@reach/router';
 import { UiContext } from '../../context/ui.context';
 
 const StyledAppBar = styled(AppBar)`
@@ -35,9 +37,10 @@ const StyledAppBar = styled(AppBar)`
   }
 `;
 
-export default function Nav() {
+export default function Nav(props) {
   const uiContext = useContext(UiContext);
   const { setSearchField, showOnScroll } = uiContext;
+  const { detailPageStyle } = props;
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -56,13 +59,19 @@ export default function Nav() {
             : 'nav nav__search'
         }
       >
-        <TextField
-          // eslint-disable-next-line no-restricted-globals
-          onChange={() => handleChange(event)}
-          id='filled-basic'
-          label='Search'
-          variant='filled'
-        />
+        {detailPageStyle ? (
+          <Button variant='contained' onClick={() => navigate('/')}>
+            Go back
+          </Button>
+        ) : (
+          <TextField
+            // eslint-disable-next-line no-restricted-globals
+            onChange={() => handleChange(event)}
+            id='filled-basic'
+            label='Search'
+            variant='filled'
+          />
+        )}
       </Toolbar>
     </StyledAppBar>
   );
