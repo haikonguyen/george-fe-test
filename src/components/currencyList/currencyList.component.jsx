@@ -1,23 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import CurrencyItem from '../currencyItem/currencyItem.component';
+import { UiContext } from '../../context/ui.context';
 
-const CurrencyList = () => {
-  const [data, setData] = useState(null);
-
-  const fetchFunc = async () => {
-    const response = await fetch(
-      'https://raw.githubusercontent.com/keriati/george-fx-test/master/fx.json'
-    );
-    const resJson = await response.json();
-    const mainCurrency = resJson.baseCurrency;
-    const data = resJson.fx;
-    setData(data);
-  };
-
-  useEffect(() => {
-    fetchFunc();
-  }, []);
-
+const CurrencyList = ({ data }) => {
   return (
     <>
       {data &&
