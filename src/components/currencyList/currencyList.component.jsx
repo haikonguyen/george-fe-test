@@ -5,9 +5,11 @@ import CurrencyItem from '../currencyItem/currencyItem.component';
 import Layout from '../layout/layout.component';
 // import Container from '../layout/container.component';
 
-const CurrencyList = ({ data }) => {
+const CurrencyList = (props) => {
+  const { data, baseCurrency } = props;
   return (
     <Layout>
+      <h3>Base Currency: {baseCurrency || 'N/A'}</h3>
       {data &&
         data.map((currencyItem) => (
           <Link key={uuidv4()} to={`detail/${currencyItem.currency}`}>
