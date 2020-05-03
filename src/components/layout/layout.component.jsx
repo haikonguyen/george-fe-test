@@ -1,8 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { StylesProvider } from '@material-ui/core/styles';
+import styled from 'styled-components';
 import Nav from '../navigation/navigation.component';
 import { GlobalStyle } from './layout.style';
+
+const Container = styled.main`
+  max-width: 1140px;
+  margin: 0 auto;
+`;
 
 const Layout = (props) => {
   const { children, data, detailPageStyle } = props;
@@ -23,8 +29,7 @@ const Layout = (props) => {
         />
       </Helmet>
       <Nav detailPageStyle={detailPageStyle} data={data} />
-      {/* Templates & Pages */}
-      {children}
+      <Container>{children}</Container>
     </StylesProvider>
   );
 };
