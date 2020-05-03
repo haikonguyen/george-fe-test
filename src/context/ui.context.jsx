@@ -20,7 +20,7 @@ const UiContextProvider = (props) => {
 
   const fetchFunc = async () => {
     const response = await fetch(
-      'https://raw.githubusercontent.com/keriati/george-fx-test/master/fx.json'
+      'https://raw.githubusercontent.com/haikonguyen/george-fe-test/master/src/data/mockData.json'
     );
     const resJson = await response.json();
     const mainCurrency = resJson.baseCurrency;

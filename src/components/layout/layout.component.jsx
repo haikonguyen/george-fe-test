@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { StylesProvider } from '@material-ui/core/styles';
 import Nav from '../navigation/navigation.component';
 import { GlobalStyle } from './layout.style';
-import { DarkTheme, LightTheme } from '../../themes/themes';
-import { ThemeContext } from '../../context/theme.context';
 
 const Layout = (props) => {
   const { children, data } = props;
