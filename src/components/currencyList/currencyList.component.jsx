@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import CurrencyItem from '../currencyItem/currencyItem.component';
 import Layout from '../layout/layout.component';
 // import Container from '../layout/container.component';
+import { getFlag } from './currencyFuntions';
 
 const CurrencyList = (props) => {
   const { data, baseCurrency } = props;
@@ -12,19 +13,15 @@ const CurrencyList = (props) => {
       <h3>Base Currency: {baseCurrency || 'N/A'}</h3>
       {data &&
         data.map((currencyItem) => (
-          <Link key={uuidv4()} to={`detail/${currencyItem.currency}`}>
+          <Link
+            key={currencyItem.currency}
+            to={`detail/${currencyItem.currency}`}
+          >
             <CurrencyItem
               currency={currencyItem.currency}
               name={currencyItem.nameI18N ? currencyItem.nameI18N : 'N/A'}
-              flag={`https://www.countryflags.io/${currencyItem.currency.substr(
-                0,
-                2
-              )}/flat/64.png`}
-              buy={
-                currencyItem?.exchangeRate?.buy
-                  ? currencyItem?.exchangeRate?.buy
-                  : 'N/A'
-              }
+              flag={getFlag(currencyItem.currency)}
+              buy={currencyItem?.exchangeRate?.buy || 'N/A'}
               middle={
                 currencyItem?.exchangeRate?.middle
                   ? currencyItem?.exchangeRate?.middle
